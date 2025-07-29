@@ -7,7 +7,7 @@ namespace ShoppingService.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize(Roles = "Admin")]
+    // [Authorize(Roles = "Admin")]
     public class CartDetailsController : ControllerBase
     {
         private readonly ICartDetailService _cartDetailService;
@@ -38,7 +38,7 @@ namespace ShoppingService.Controllers
                 }
 
                 var cartDetails = await _cartDetailService.GetCartDetailsByCartIdCartDetailService(cart.IdCart);
-                
+
                 return Ok(cartDetails);
             }
             catch (Exception ex)
@@ -50,7 +50,6 @@ namespace ShoppingService.Controllers
                 });
             }
         }
-
 
         [Authorize]
         [HttpGet("getCartItemCount/{email}")]
@@ -81,7 +80,6 @@ namespace ShoppingService.Controllers
                 return StatusCode(500, new { message = $"An error occurred: {ex.Message}" });
             }
         }
-
 
         [Authorize]
         [HttpPost("addToCartDetailAndCart/{email}")]
