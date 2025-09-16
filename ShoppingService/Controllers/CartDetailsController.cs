@@ -7,7 +7,6 @@ namespace ShoppingService.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    // [Authorize(Roles = "Admin")]
     public class CartDetailsController : ControllerBase
     {
         private readonly ICartDetailService _cartDetailService;
@@ -80,6 +79,7 @@ namespace ShoppingService.Controllers
                 return StatusCode(500, new { message = $"An error occurred: {ex.Message}" });
             }
         }
+
 
         [Authorize]
         [HttpPost("addToCartDetailAndCart/{email}")]
